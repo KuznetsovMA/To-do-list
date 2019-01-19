@@ -2,34 +2,16 @@
   <div class="app">
     <section class="todo">
       <ul class="list">
-        <li class="list__item">
-          <input class="checkbox visually-hidden" name="sweatshirt" type="checkbox" id="sweatshirt" checked/>
-          <label for="sweatshirt">Buy new sweatshirt</label>
-        </li>
-        <li class="list__item">
-          <input class="checkbox visually-hidden" name="promotion" type="checkbox" id="promotion" checked/>
-          <label for="promotion">Begin promotional phase</label>
-        </li>
-        <li class="list__item">
-          <input class="checkbox visually-hidden" name="read" type="checkbox" id="read"/>
-          <label for="read">Read an article</label>
-        </li>
-        <li class="list__item">
-          <input class="checkbox visually-hidden" name="asleep" type="checkbox" id="asleep"/>
-          <label for="asleep">Try not to fall asleep</label>
-        </li>
-        <li class="list__item">
-          <input class="checkbox visually-hidden" name="Sherlock" type="checkbox" id="Sherlock"/>
-          <label for="Sherlock">Watch ‘Sherlock’</label>
-        </li>
-        <li class="list__item">
-          <input class="checkbox visually-hidden" name="QA" type="checkbox" id="QA"/>
-          <label for="QA">Begin QA for the product</label>
-        </li>
-        <li class="list__item">
-          <input class="checkbox visually-hidden" name="walk" type="checkbox" id="walk"/>
-          <label for="walk">Go for a walk</label>
-        </li>
+        <template  v-for="task in getTasks">
+          <li class="list__item" v-bind:key="task.id">
+            <input class="checkbox visually-hidden" 
+            v-bind:name="task.name" 
+            v-bind:id="task.name" 
+            type="checkbox" 
+            />
+            <label v-bind:for="task.name"> {{ task.name }} </label>
+          </li>
+        </template>
       </ul>
       <button class="todo__add"></button>
     </section>
@@ -38,7 +20,11 @@
 
 <script>
 export default {
- 
+  computed: {
+    getTasks () {
+      return this.$store.getters['getTasks']
+    }
+  }
 }
 </script>
 
@@ -87,7 +73,7 @@ export default {
     content: "";
     position: absolute;
     top: 0px;
-    right: 80px;
+    right: 100px;
     width: 45px;
     height: 45px;
 
@@ -99,7 +85,7 @@ export default {
     content: "";
     position: absolute;
     top: 0px;
-    right: 80px;
+    right: 100px;
     width: 45px;
     height: 45px;
 
@@ -131,6 +117,8 @@ export default {
     background-position: center;
 
     box-shadow: 0 0 10px 2px rgba(62, 67, 79, 0.2);
+
+    cursor: pointer;
   }
 
   .visually-hidden {
