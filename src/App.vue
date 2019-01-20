@@ -30,6 +30,9 @@ export default {
   computed: {
     getTasks () {
       return this.$store.getters['getTasks']
+    },
+    getModal () {
+      return this.$store.getters['getModal']
     }
   },
   methods: {
@@ -52,16 +55,25 @@ export default {
   $grayColor: #bdc0ca;
   $limeColor: #50e3a4;
 
+  html {
+    height: 100%;
+  }
+
   body {
+    height: 100%;
     margin: 0;
     background-color: $cookieColor;
   }
 
+  .app {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
   .todo {
-    position: fixed;
-    top: 50%;
-    left: 50%; 
-    transform: translate(-50%, -50%); 
+    position: relative;
     width: 550px;
     background: white;
     box-shadow: 0 0 10px 2px $darkBlueColorAlpha;

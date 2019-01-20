@@ -28,9 +28,9 @@ export default {
     .modal {
         position: absolute;
         z-index: 100;
-        width: 750px;
+        width: 550px;
         background-color: white;
-        padding-bottom: 70px;
+        padding-bottom: 50px;
         box-shadow: 0 0 10px 2px $darkBlueColorAlpha;
     }
 
@@ -42,18 +42,18 @@ export default {
 
     .modal__title {
         color: $darkBlueColor;
-        font-size: 33px;
+        font-size: 25px;
         font-weight: 400;
         text-align: center;
     }
 
     .modal__field {
-        width: 540px;
+        width: 340px;
         height: 30px;
-        margin: 30px auto 70px auto;
+        margin: 20px auto 40px auto;
         border: none;
         font-family: 'Open Sans', Arial, sans-serif;
-        font-size: 33px;
+        font-size: 25px;
         font-weight: 300;
         text-align: center;
         color: $darkBlueColor;
@@ -72,8 +72,8 @@ export default {
         background-color: transparent;
         background-image: url("../assets/close.png");
         background-repeat: no-repeat;
-        margin-left: 666px;
-        margin-top: 26px;
+        margin-left: 460px;
+        margin-top: 20px;
         cursor: pointer;
 
         &:focus {
@@ -89,7 +89,7 @@ export default {
         width: 350px;
         margin: 0 auto;
         font-family: 'Open Sans', Arial, sans-serif;
-        font-size: 33px;
+        font-size: 25px;
         font-weight: 300;
         color: white;
         background-color: $limeColor;
@@ -100,5 +100,4 @@ export default {
             outline: none;
         }
     }
-
 </style>

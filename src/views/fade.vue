@@ -13,9 +13,9 @@ export default {
   
   .fade {
       position: absolute;
+      z-index: 100;
       width: 100%;
       height: 100%;
-      z-index: 100;
       opacity: 0.8;
       background-color: $limeColor;
   }
