@@ -16,7 +16,7 @@
         </template>
       </ul>
       <button
-      @click.prevent="getModal = true" 
+      @click.prevent="changeModalState" 
       class="todo__add"></button>
     </section>
   </div>
@@ -30,9 +30,11 @@ export default {
   computed: {
     getTasks () {
       return this.$store.getters['getTasks']
-    },
-    getModal () {
-      return this.$store.getters['getModal']
+    }
+  },
+  methods: {
+    changeModalState () {
+      this.$store.dispatch('changeModalState')
     }
   },
   components: {
@@ -50,26 +52,17 @@ export default {
   $grayColor: #bdc0ca;
   $limeColor: #50e3a4;
 
-  html {
-    height: 100%;
-  }
-
   body {
-    height: 100%;
     margin: 0;
     background-color: $cookieColor;
   }
 
-  .app {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
   .todo {
-    position: relative;
-    width: 750px;
+    position: fixed;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    width: 550px;
     background: white;
     box-shadow: 0 0 10px 2px $darkBlueColorAlpha;
   }
@@ -78,13 +71,13 @@ export default {
     list-style: none;
     color: $darkBlueColor;
     font-family: 'Open Sans', Arial, sans-serif;
-    font-size: 33px;
-    padding: 80px 0px 80px 100px;
+    font-size: 25px;
+    padding: 60px 0px 80px 70px;
     margin: 0;
   }
 
   .list__item {
-    padding-bottom: 40px;
+    padding-bottom: 30px;
   }
 
   .list__item label {
@@ -97,10 +90,10 @@ export default {
   .checkbox + label::before {
     content: "";
     position: absolute;
-    top: 0px;
-    right: 100px;
-    width: 45px;
-    height: 45px;
+    top: -4px;
+    right: 70px;
+    width: 42px;
+    height: 42px;
 
     border: 4px solid $lightGrayColor;
     border-radius: 50%;
@@ -109,10 +102,10 @@ export default {
   .checkbox:checked + label::after {
     content: "";
     position: absolute;
-    top: 0px;
-    right: 100px;
-    width: 45px;
-    height: 45px;
+    top: -4px;
+    right: 70px;
+    width: 42px;
+    height: 42px;
 
     border: 4px solid $limeColor;
     border-radius: 50%;
@@ -128,10 +121,10 @@ export default {
   .todo__add {
     position: absolute;
     bottom: -90px;
-    left: 285px;
+    left: 190px;
 
-    width: 180px;
-    height: 180px;
+    width: 170px;
+    height: 170px;
 
     border-radius: 50%;
     border: none;

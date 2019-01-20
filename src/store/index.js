@@ -36,15 +36,26 @@ const store = new Vuex.Store({
               id: 7
             }
         ],
-        modal: true
+        modal: false,
+        counter: 0
+    },
+    mutation: {
+      set(state, {name, value}) {
+        return state[name] = value
+      }
+    },
+    actions: {
+      changeModalState ({commit, state}) {
+        commit('set', {name: 'counter', value: state.counter + 1})
+      }
     },
     getters: {
-        getTasks (state) {
-            return state.tasks
-        },
-        getModal (state) {
-          return state.modal
-        }
+      getTasks (state) {
+        return state.tasks
+      },
+      getModal (state) {
+        return state.modal
+      }
     }
 })
 
