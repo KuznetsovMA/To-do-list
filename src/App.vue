@@ -8,7 +8,8 @@
           <li class="list__item" v-bind:key="task.id">
             <input class="checkbox visually-hidden" 
             v-bind:name="task.name" 
-            v-bind:id="task.name" 
+            v-bind:id="task.name"
+            v-bind:checked="task.done === true"
             type="checkbox" 
             />
             <label v-bind:for="task.name"> {{ task.name }} </label>
@@ -50,8 +51,8 @@ export default {
 <style lang="scss">
   $cookieColor: #f0efe9;
   $darkBlueColor: #3e434f;
-  $darkBlueColorAlpha: rgba(62, 67, 79, 0.2); 
-  $lightGrayColor: #eef0f5; 
+  $darkBlueColorAlpha: rgba(62, 67, 79, 0.2);
+  $lightGrayColor: #eef0f5;
   $grayColor: #bdc0ca;
   $limeColor: #50e3a4;
 
@@ -62,30 +63,34 @@ export default {
   body {
     height: 100%;
     margin: 0;
+
     background-color: $cookieColor;
   }
 
   .app {
-    height: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    height: 100%;
   }
-  
+
   .todo {
     position: relative;
+
     width: 550px;
+
     background: white;
-    box-shadow: 0 0 10px 2px $darkBlueColorAlpha;
+    box-shadow: 0 4px 10px 1px $darkBlueColorAlpha;
   }
 
   .list {
-    list-style: none;
-    color: $darkBlueColor;
-    font-family: 'Open Sans', Arial, sans-serif;
-    font-size: 25px;
-    padding: 60px 0px 80px 70px;
     margin: 0;
+    padding: 60px 0 80px 70px;
+
+    list-style: none;
+    font-size: 25px;
+    font-family: "Open Sans", Arial, sans-serif;
+    color: $darkBlueColor;
   }
 
   .list__item {
@@ -94,8 +99,11 @@ export default {
 
   .list__item label {
     position: relative;
+
     display: block;
+
     cursor: pointer;
+
     user-select: none;
   }
 
@@ -104,6 +112,7 @@ export default {
     position: absolute;
     top: -4px;
     right: 70px;
+
     width: 42px;
     height: 42px;
 
@@ -116,14 +125,15 @@ export default {
     position: absolute;
     top: -4px;
     right: 70px;
+
     width: 42px;
     height: 42px;
 
-    border: 4px solid $limeColor;
-    border-radius: 50%;
     background-image: url("./assets/checked.png");
     background-repeat: no-repeat;
     background-position: center;
+    border: 4px solid $limeColor;
+    border-radius: 50%;
   }
 
   .checkbox:checked + label {
@@ -138,16 +148,13 @@ export default {
     width: 170px;
     height: 170px;
 
-    border-radius: 50%;
-    border: none;
-
     background-color: $limeColor;
     background-image: url("./assets/plus.png");
     background-repeat: no-repeat;
     background-position: center;
-
+    border: none;
+    border-radius: 50%;
     box-shadow: 0 0 10px 2px $darkBlueColorAlpha;
-
     cursor: pointer;
 
     &:focus {
@@ -161,15 +168,17 @@ export default {
     width: 1px;
     height: 1px;
     margin: -1px;
-    border: 0;
     padding: 0;
+    overflow: hidden;
 
     white-space: nowrap;
 
-    clip-path: inset(100%);
+    border: 0;
+
     clip: rect(0 0 0 0);
-    overflow: hidden;
+    clip-path: inset(100%);
   }
+
 </style>
 
 

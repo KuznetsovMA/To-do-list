@@ -2,7 +2,7 @@
     <div class="modal">
         <form action="">
             <button 
-            @click.prevent="showModal = false"
+            @click.prevent="changeModalState"
             class="modal__close" 
             >
             </button>
@@ -15,89 +15,106 @@
 
 <script>
 export default {
-
+  methods: {
+      changeModalState () {
+      this.$store.dispatch('changeModalState')
+    }
+  }
 }
 </script>
 
 <style lang="scss">
-    $lightGrayColor: #eef0f5; 
-    $darkBlueColor: #3e434f;
-    $darkBlueColorAlpha: rgba(62, 67, 79, 0.2);
-    $limeColor: #50e3a4;
+$lightGrayColor: #eef0f5;
+$darkBlueColor: #3e434f;
+$darkBlueColorAlpha: rgba(62, 67, 79, 0.2);
+$limeColor: #50e3a4;
 
-    .modal {
-        position: absolute;
-        z-index: 100;
-        width: 550px;
-        background-color: white;
-        padding-bottom: 50px;
-        box-shadow: 0 0 10px 2px $darkBlueColorAlpha;
-    }
+.modal {
+  position: absolute;
+  z-index: 100;
 
-    form {
-        font-family: 'Open Sans', Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-    }
+  width: 550px;
+  padding-bottom: 50px;
 
-    .modal__title {
-        color: $darkBlueColor;
-        font-size: 25px;
-        font-weight: 400;
-        text-align: center;
-    }
+  background-color: white;
+  box-shadow: 0 0 10px 2px $darkBlueColorAlpha;
+}
 
-    .modal__field {
-        width: 340px;
-        height: 30px;
-        margin: 20px auto 40px auto;
-        border: none;
-        font-family: 'Open Sans', Arial, sans-serif;
-        font-size: 25px;
-        font-weight: 300;
-        text-align: center;
-        color: $darkBlueColor;
-        border-bottom: 2px solid $lightGrayColor;
+form {
+  display: flex;
+  flex-direction: column;
 
-        &:focus {
-            outline: none;
-        }
-    }
+  font-family: "Open Sans", Arial, sans-serif;
+}
 
-    .modal__close {
-        display: block;
-        border: none;
-        width: 59px;
-        height: 59px;
-        background-color: transparent;
-        background-image: url("../assets/close.png");
-        background-repeat: no-repeat;
-        margin-left: 460px;
-        margin-top: 20px;
-        cursor: pointer;
+.modal__title {
+  font-weight: 400;
+  font-size: 25px;
+  text-align: center;
+  color: $darkBlueColor;
+}
 
-        &:focus {
-            outline: none;
-        }
-    }
+.modal__field {
+  width: 340px;
+  height: 30px;
+  margin: 20px auto 50px auto;
 
-    .modal__submit {
-        display: block;
-        border: none;
-        border-radius: 30px;
-        padding: 10px;
-        width: 350px;
-        margin: 0 auto;
-        font-family: 'Open Sans', Arial, sans-serif;
-        font-size: 25px;
-        font-weight: 300;
-        color: white;
-        background-color: $limeColor;
-        box-shadow: 0 0 10px 2px $darkBlueColorAlpha;
-        cursor: pointer;
+  font-weight: 300;
+  font-size: 25px;
+  font-family: "Open Sans", Arial, sans-serif;
+  text-align: center;
+  color: $darkBlueColor;
 
-        &:focus {
-            outline: none;
-        }
-    }
+  border: none;
+  border-bottom: 2px solid $lightGrayColor;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.modal__close {
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin-top: 20px;
+  margin-left: 480px;
+  padding: 0;
+
+  background-color: transparent;
+  background-image: url("../assets/close.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 26px;
+  border: 4px solid $lightGrayColor;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.modal__submit {
+  display: block;
+  width: 350px;
+  margin: 0 auto;
+  padding: 14px;
+
+  font-weight: 300;
+  font-size: 25px;
+  font-family: "Open Sans", Arial, sans-serif;
+  color: white;
+
+  background-color: $limeColor;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 0 10px 2px $darkBlueColorAlpha;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
 </style>
