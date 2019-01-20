@@ -35,11 +35,15 @@ const store = new Vuex.Store({
               name: 'Go for a walk',
               id: 7
             }
-        ]
+        ],
+        modal: true
     },
     getters: {
         getTasks (state) {
             return state.tasks
+        },
+        getModal (state) {
+          return state.modal
         }
     }
 })

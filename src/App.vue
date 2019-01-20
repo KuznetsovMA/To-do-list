@@ -1,8 +1,8 @@
 <template>
   <div class="app">
-    <fade v-if="fade"/>
+    <fade v-if="getModal"/>
     <section class="todo">
-      <modal/>
+      <modal v-if="getModal"/>
       <ul class="list">
         <template  v-for="task in getTasks">
           <li class="list__item" v-bind:key="task.id">
@@ -15,7 +15,9 @@
           </li>
         </template>
       </ul>
-      <button class="todo__add"></button>
+      <button
+      @click.prevent="getModal = true" 
+      class="todo__add"></button>
     </section>
   </div>
 </template>
@@ -25,12 +27,12 @@ import fade from './views/fade'
 import modal from './views/modal'
 
 export default {
-  data: {
-    fade: false
-  },
   computed: {
     getTasks () {
       return this.$store.getters['getTasks']
+    },
+    getModal () {
+      return this.$store.getters['getModal']
     }
   },
   components: {
@@ -142,6 +144,10 @@ export default {
     box-shadow: 0 0 10px 2px $darkBlueColorAlpha;
 
     cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   .visually-hidden {
