@@ -34,8 +34,7 @@ const store = new Vuex.Store({
             {
               name: 'Go for a walk',
               id: 7
-            },
-
+            }
         ]
     },
     getters: {

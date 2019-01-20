@@ -1,6 +1,8 @@
 <template>
   <div class="app">
+    <fade v-if="fade"/>
     <section class="todo">
+      <modal/>
       <ul class="list">
         <template  v-for="task in getTasks">
           <li class="list__item" v-bind:key="task.id">
@@ -19,39 +21,60 @@
 </template>
 
 <script>
+import fade from './views/fade'
+import modal from './views/modal'
+
 export default {
+  data: {
+    fade: false
+  },
   computed: {
     getTasks () {
       return this.$store.getters['getTasks']
     }
+  },
+  components: {
+    fade,
+    modal
   }
 }
 </script>
 
-<style>
+<style lang="scss">
+  $cookieColor: #f0efe9;
+  $darkBlueColor: #3e434f;
+  $darkBlueColorAlpha: rgba(62, 67, 79, 0.2); 
+  $lightGrayColor: #eef0f5; 
+  $grayColor: #bdc0ca;
+  $limeColor: #50e3a4;
+
+  html {
+    height: 100%;
+  }
 
   body {
-    background-color: #f0efe9;
+    height: 100%;
     margin: 0;
+    background-color: $cookieColor;
   }
 
   .app {
-    height: 100vh;
+    height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
   }
 
   .todo {
     position: relative;
     width: 750px;
     background: white;
-    box-shadow: 0 0 10px 2px rgba(62, 67, 79, 0.2);
+    box-shadow: 0 0 10px 2px $darkBlueColorAlpha;
   }
 
   .list {
     list-style: none;
-    color: #3e434f;
+    color: $darkBlueColor;
     font-family: 'Open Sans', Arial, sans-serif;
     font-size: 33px;
     padding: 80px 0px 80px 100px;
@@ -68,7 +91,7 @@ export default {
     cursor: pointer;
     user-select: none;
   }
-  
+
   .checkbox + label::before {
     content: "";
     position: absolute;
@@ -77,7 +100,7 @@ export default {
     width: 45px;
     height: 45px;
 
-    border: 4px solid #eef0f5;
+    border: 4px solid $lightGrayColor;
     border-radius: 50%;
   }
 
@@ -89,7 +112,7 @@ export default {
     width: 45px;
     height: 45px;
 
-    border: 4px solid #50e3a4;
+    border: 4px solid $limeColor;
     border-radius: 50%;
     background-image: url("./assets/checked.png");
     background-repeat: no-repeat;
@@ -97,7 +120,7 @@ export default {
   }
 
   .checkbox:checked + label {
-    color: #bdc0ca;
+    color: $grayColor;
   }
 
   .todo__add {
@@ -111,12 +134,12 @@ export default {
     border-radius: 50%;
     border: none;
 
-    background-color: #50e3a4;
+    background-color: $limeColor;
     background-image: url("./assets/plus.png");
     background-repeat: no-repeat;
     background-position: center;
 
-    box-shadow: 0 0 10px 2px rgba(62, 67, 79, 0.2);
+    box-shadow: 0 0 10px 2px $darkBlueColorAlpha;
 
     cursor: pointer;
   }
@@ -136,7 +159,6 @@ export default {
     clip: rect(0 0 0 0);
     overflow: hidden;
   }
-
 </style>
 
 
