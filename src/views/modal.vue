@@ -60,10 +60,7 @@
 </script>
 
 <style lang="scss">
-$lightGrayColor: #eef0f5;
-$darkBlueColor: #3e434f;
-$darkBlueColorAlpha: rgba(62, 67, 79, 0.2);
-$limeColor: #50e3a4;
+@import "../scss/vars.scss";
 
 .modal {
   position: absolute;
@@ -80,7 +77,7 @@ form {
   display: flex;
   flex-direction: column;
 
-  font-family: "Open Sans", Arial, sans-serif;
+  font-family: "Gotham Rounded", "Open Sans", sans-serif;
 }
 
 .modal__title {
@@ -97,7 +94,7 @@ form {
 
   font-weight: 300;
   font-size: 25px;
-  font-family: "Open Sans", Arial, sans-serif;
+  font-family: "Gotham Rounded", "Open Sans", sans-serif;
   text-align: center;
   color: $darkBlueColor;
 
@@ -144,7 +141,7 @@ form {
 
   font-weight: 300;
   font-size: 25px;
-  font-family: "Open Sans", Arial, sans-serif;
+  font-family: "Gotham Rounded", "Open Sans", sans-serif;
   color: white;
 
   background-color: $limeColor;

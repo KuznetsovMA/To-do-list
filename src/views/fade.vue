@@ -8,7 +8,7 @@ export default {
 </script>
 
 <style lang="scss">
-$limeColor: #50e3a4;
+@import "../scss/vars.scss";
 
 .fade {
   position: fixed;

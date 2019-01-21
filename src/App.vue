@@ -71,12 +71,8 @@
 </script>
 
 <style lang="scss">
-  $cookieColor: #f0efe9;
-  $darkBlueColor: #3e434f;
-  $darkBlueColorAlpha: rgba(62, 67, 79, 0.2);
-  $lightGrayColor: #eef0f5;
-  $grayColor: #bdc0ca;
-  $limeColor: #50e3a4;
+@import "./scss/fonts.scss";
+@import "./scss/vars.scss";
 
   body {
     height: 100%;
@@ -107,7 +103,7 @@
 
     list-style: none;
     font-size: 25px;
-    font-family: "Open Sans", Arial, sans-serif;
+    font-family: "Gotham Rounded", "Open Sans", sans-serif;
     color: $darkBlueColor;
   }
 
