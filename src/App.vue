@@ -1,30 +1,31 @@
 <template>
-  <div class="app">
-    <fade v-if="getModal"/>
+  <div 
+  v-bind:class="{ fade: getModal }"
+  class="app">
     <section class="todo">
       <modal v-if="getModal"/>
       <ul class="list">
         <template  v-for="task in getTasks">
           <li class="list__item" v-bind:key="task.id">
             <input class="checkbox visually-hidden" 
-            v-bind:name="task.name" 
-            v-bind:id="task.name"
-            v-bind:checked="task.done === true"
+            v-bind:name="task.title" 
+            v-bind:id="task.title"
+            v-bind:checked="task.completed === true"
             type="checkbox" 
             />
-            <label v-bind:for="task.name"> {{ task.name }} </label>
+            <label v-bind:for="task.title"> {{ task.title }} </label>
           </li>
         </template>
       </ul>
       <button
       @click.prevent="changeModalState" 
-      class="todo__add"></button>
+      class="todo__add">
+      </button>
     </section>
   </div>
 </template>
 
 <script>
-import fade from './views/fade'
 import modal from './views/modal'
 
 export default {
@@ -39,10 +40,12 @@ export default {
   methods: {
     changeModalState () {
       this.$store.dispatch('changeModalState')
+    },
+    getData () {
+      this.$store.dispatch('getData')
     }
   },
   components: {
-    fade,
     modal
   }
 }
@@ -56,10 +59,6 @@ export default {
   $grayColor: #bdc0ca;
   $limeColor: #50e3a4;
 
-  html {
-    height: 100%;
-  }
-
   body {
     height: 100%;
     margin: 0;
@@ -67,25 +66,31 @@ export default {
     background-color: $cookieColor;
   }
 
-  .app {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .fade {
+    position: absolute;
+    z-index: 100;
+
+    width: 100%;
     height: 100%;
+
+    background-color: $limeColor;
+    opacity: 0.8;
   }
 
   .todo {
     position: relative;
 
     width: 550px;
+    margin: 50px auto;
 
     background: white;
     box-shadow: 0 4px 10px 1px $darkBlueColorAlpha;
   }
 
   .list {
-    margin: 0;
-    padding: 60px 0 80px 70px;
+    width: 400px;
+    margin: 0 auto;
+    padding: 60px 0 80px 0;
 
     list-style: none;
     font-size: 25px;
@@ -94,13 +99,14 @@ export default {
   }
 
   .list__item {
-    padding-bottom: 30px;
+    position: relative;
+
+    width: 300px;
   }
 
   .list__item label {
-    position: relative;
-
     display: block;
+    padding-bottom: 30px;
 
     cursor: pointer;
 
@@ -110,8 +116,8 @@ export default {
   .checkbox + label::before {
     content: "";
     position: absolute;
-    top: -4px;
-    right: 70px;
+    top: 0;
+    right: -100px;
 
     width: 42px;
     height: 42px;
@@ -123,8 +129,8 @@ export default {
   .checkbox:checked + label::after {
     content: "";
     position: absolute;
-    top: -4px;
-    right: 70px;
+    top: 0;
+    right: -100px;
 
     width: 42px;
     height: 42px;

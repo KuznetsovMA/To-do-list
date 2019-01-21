@@ -1,47 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
+import { GET_DATA } from '../const'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
-        tasks: [
-            {
-              name: 'Buy new sweatshirt',
-              id: 1,
-              done: true
-            },
-            {
-              name: 'Begin promotional phase',
-              id: 2,
-              done: true
-            },
-            {
-              name: 'Read an article',
-              id: 3,
-              done: false
-            },
-            {
-              name: 'Try not to fall asleep',
-              id: 4,
-              done: false
-            },
-            {
-              name: 'Watch ‘Sherlock’',
-              id: 5,
-              done: false
-            },
-            {
-              name: 'Begin QA for the product',
-              id: 6,
-              done: false
-            },
-            {
-              name: 'Go for a walk',
-              id: 7,
-              done: false
-            }
-        ],
+        tasks: {},
         modal: false
     },
     mutations: {
@@ -52,6 +18,14 @@ const store = new Vuex.Store({
     actions: {
       changeModalState ({commit, state}) {
         commit('set', {name: 'modal', value: !state.modal})
+      },
+      getData ({commit}) {
+        return axios.get(GET_DATA)
+        .then(res => {
+          console.log(res)
+          commit('set', {name: 'tasks', value: res.data})
+        })
+        .catch(err => console.log(err))
       }
     },
     getters: {

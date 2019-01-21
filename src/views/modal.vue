@@ -1,13 +1,13 @@
 <template>
     <div class="modal">
-        <form action="">
+        <form action="https://jsonplaceholder.typicode.com/todos" method="POST">
             <button 
             @click.prevent="changeModalState"
             class="modal__close" 
             >
             </button>
             <h1 class="modal__title">Add New Task</h1>
-            <input class="modal__field" type="text">
+            <input class="modal__field" type="text" name="name">
             <button class="modal__submit">OK</button>
         </form>
     </div>
