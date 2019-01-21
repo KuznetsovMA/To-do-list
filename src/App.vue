@@ -1,54 +1,63 @@
 <template>
-  <div 
-  v-bind:class="{ fade: getModal }"
-  class="app">
-    <section class="todo">
-      <modal v-if="getModal"/>
-      <ul class="list">
-        <template  v-for="task in getTasks">
-          <li class="list__item" v-bind:key="task.id">
-            <input class="checkbox visually-hidden" 
-            v-bind:name="task.title" 
-            v-bind:id="task.title"
-            v-bind:checked="task.completed === true"
-            type="checkbox" 
-            />
-            <label v-bind:for="task.title"> {{ task.title }} </label>
-          </li>
-        </template>
-      </ul>
-      <button
-      @click.prevent="changeModalState" 
-      class="todo__add">
-      </button>
-    </section>
+  <div class="app">
+    <fade v-if="getModal" />
+    <div class="wrapper">
+      <section class="todo">
+        <modal v-if="getModal" />
+        <ul class="list">
+          <template v-for="task in getTasks">
+            <li class="list__item" v-bind:key="task.id">
+              <input 
+              class="checkbox visually-hidden" 
+              v-bind:name="task.title" 
+              v-bind:id="task.title" 
+              v-bind:checked="task.completed === true"
+              type="checkbox" 
+              />
+              <label v-bind:for="task.title"> {{ task.title }} </label>
+            </li>
+          </template>
+        </ul>
+        <button 
+        @click.prevent="changeModalState" 
+        class="todo__add"
+        >
+        </button>
+      </section>
+    </div>
   </div>
 </template>
 
 <script>
-import modal from './views/modal'
+  import modal from './views/modal'
+  import fade from './views/fade'
 
-export default {
-  computed: {
-    getTasks () {
-      return this.$store.getters['getTasks']
+  export default {
+    computed: {
+      getTasks() {
+        return this.$store.getters['getTasks']
+      },
+      getModal() {
+        return this.$store.getters['getModal']
+      }
     },
-    getModal () {
-      return this.$store.getters['getModal']
-    }
-  },
-  methods: {
-    changeModalState () {
-      this.$store.dispatch('changeModalState')
+    methods: {
+      changeModalState() {
+        this.$store.dispatch('changeModalState')
+      },
+      getData() {
+        this.$store.dispatch('getData')
+      }
     },
-    getData () {
-      this.$store.dispatch('getData')
+    components: {
+      modal,
+      fade
+    },
+    beforeMount() {
+       this.getData() 
     }
-  },
-  components: {
-    modal
   }
-}
+
 </script>
 
 <style lang="scss">
@@ -66,22 +75,16 @@ export default {
     background-color: $cookieColor;
   }
 
-  .fade {
-    position: absolute;
-    z-index: 100;
-
-    width: 100%;
-    height: 100%;
-
-    background-color: $limeColor;
-    opacity: 0.8;
+  .wrapper {
+    padding-top: 50px;
   }
 
   .todo {
     position: relative;
 
     width: 550px;
-    margin: 50px auto;
+    margin: 0 auto;
+    padding-top: 0;
 
     background: white;
     box-shadow: 0 4px 10px 1px $darkBlueColorAlpha;
@@ -186,5 +189,3 @@ export default {
   }
 
 </style>
-
-

@@ -1,0 +1,26 @@
+<template>
+    <div class="fade"></div>
+</template>
+
+<script>
+export default {
+}
+</script>
+
+<style lang="scss">
+$limeColor: #50e3a4;
+
+.fade {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: $limeColor;
+  opacity: 0.8;
+}
+
+</style>

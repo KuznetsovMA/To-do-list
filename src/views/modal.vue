@@ -1,26 +1,24 @@
 <template>
-    <div class="modal">
-        <form action="https://jsonplaceholder.typicode.com/todos" method="POST">
-            <button 
-            @click.prevent="changeModalState"
-            class="modal__close" 
-            >
-            </button>
-            <h1 class="modal__title">Add New Task</h1>
-            <input class="modal__field" type="text" name="name">
-            <button class="modal__submit">OK</button>
-        </form>
-    </div>
+  <div class="modal">
+    <form action="https://jsonplaceholder.typicode.com/todos" method="POST">
+      <button @click.prevent="changeModalState" class="modal__close">
+      </button>
+      <h1 class="modal__title">Add New Task</h1>
+      <input class="modal__field" type="text" name="name">
+      <button class="modal__submit">OK</button>
+    </form>
+  </div>
 </template>
 
 <script>
-export default {
-  methods: {
-      changeModalState () {
-      this.$store.dispatch('changeModalState')
+  export default {
+    methods: {
+      changeModalState() {
+        this.$store.dispatch('changeModalState')
+      }
     }
   }
-}
+
 </script>
 
 <style lang="scss">
