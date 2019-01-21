@@ -21,6 +21,11 @@
   import axios from 'axios'
 
   export default {
+    computed: {
+      getTasks() {
+        return this.$store.getters['getTasks']
+      }
+    },
     methods: {
       changeModalState() {
         this.$store.dispatch('changeModalState')
@@ -31,6 +36,18 @@
            completed: false,
            title: this.$refs.field.value
         })
+        this.sendData()
+      },
+      sendData() {
+        axios.post('https://jsonplaceholder.typicode.com/todos', {
+          task: this.getTasks[0]
+        })
+          .then(res => {
+            console.log(res)
+          })
+          .catch(err => {
+            console.log(err)
+          })
       }
     },
     created() {
