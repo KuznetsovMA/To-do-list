@@ -7,8 +7,8 @@
       <input 
       ref="field"
       class="modal__field" 
-      min="100"
-      type="text" 
+      type="text"
+      placeholder="" 
       name="name">
       <button
       @click.prevent="addTask" 
@@ -31,12 +31,17 @@
         this.$store.dispatch('changeModalState')
       },
       addTask() {
-        this.changeModalState()
-        this.$store.commit('addTask', {
-           completed: false,
-           title: this.$refs.field.value
-        })
-        this.sendData()
+        if (this.$refs.field.value) {
+          this.changeModalState()
+          this.$store.commit('addTask', {
+            completed: false,
+            title: this.$refs.field.value
+          })
+          this.sendData()
+        } else {
+          this.$refs.field.style.borderBottom = '2px solid red'
+          this.$refs.field.placeholder = `Oops, u've forgot the task`
+        }
       },
       sendData() {
         axios.post('https://jsonplaceholder.typicode.com/todos', {
@@ -49,9 +54,6 @@
             console.log(err)
           })
       }
-    },
-    created() {
-      console.log(this.$refs.field.value);
     }
   }
 
@@ -104,6 +106,11 @@ form {
 
   &:focus {
     outline: none;
+  }
+  
+  &::placeholder {
+    color: red;
+    opacity: 1;
   }
 }
 
