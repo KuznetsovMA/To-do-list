@@ -2,7 +2,7 @@
   <div class="app">
     <fade v-if="getModal" />
     <div class="wrapper">
-        <section class="todo" v-show="changed">
+        <section class="todo">
           <transition name="bounce">
           <modal v-if="getModal" />
           </transition>
@@ -35,11 +35,6 @@
   import fade from './views/fade'
 
   export default {
-    data() {
-      return {
-        changed: false
-      }
-    },
     computed: {
       getTasks() {
         return this.$store.getters['getTasks']
