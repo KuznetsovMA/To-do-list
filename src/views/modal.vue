@@ -4,18 +4,37 @@
       <button @click.prevent="changeModalState" class="modal__close">
       </button>
       <h1 class="modal__title">Add New Task</h1>
-      <input class="modal__field" type="text" name="name">
-      <button class="modal__submit">OK</button>
+      <input 
+      ref="field"
+      class="modal__field" 
+      min="100"
+      type="text" 
+      name="name">
+      <button
+      @click.prevent="addTask" 
+      class="modal__submit">OK</button>
     </form>
   </div>
 </template>
 
 <script>
+  import axios from 'axios'
+
   export default {
     methods: {
       changeModalState() {
         this.$store.dispatch('changeModalState')
+      },
+      addTask() {
+        this.changeModalState()
+        this.$store.commit('addTask', {
+           completed: false,
+           title: this.$refs.field.value
+        })
       }
+    },
+    created() {
+      console.log(this.$refs.field.value);
     }
   }
 

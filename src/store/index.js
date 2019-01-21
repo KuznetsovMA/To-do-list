@@ -8,12 +8,14 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
     state: {
         tasks: {},
-        lessTasks: {},
         modal: false
     },
     mutations: {
       set(state, {name, value}) {
         return state[name] = value
+      },
+      addTask (state, task) {
+        state.tasks.unshift(task)
       }
     },
     actions: {

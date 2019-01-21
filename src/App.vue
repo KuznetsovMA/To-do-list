@@ -5,7 +5,7 @@
       <section class="todo">
         <modal v-if="getModal" />
         <ul class="list">
-          <template v-for="task in getTasks.slice(0,5)">
+          <template v-for="task in getTasks.slice(0,20)">
             <li class="list__item" v-bind:key="task.id">
               <input 
               class="checkbox visually-hidden" 
