@@ -40,7 +40,7 @@
           this.sendData()
         } else {
           this.$refs.field.style.borderBottom = '2px solid red'
-          this.$refs.field.placeholder = `Oops, u've forgot the task`
+          this.$refs.field.placeholder = `Oops, there's no task`
         }
       },
       sendData() {

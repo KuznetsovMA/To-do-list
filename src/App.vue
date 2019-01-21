@@ -8,15 +8,15 @@
           </transition>
           <ul class="list">
             <template v-for="task in getTasks.slice(0,5)">
-              <li class="list__item" v-bind:key="task.id">
+              <li class="list__item" :key="task.id">
                 <input 
                 class="checkbox visually-hidden" 
-                v-bind:name="task.title" 
-                v-bind:id="task.title" 
-                v-bind:checked="task.completed === true"
+                :name="task.title" 
+                :id="task.title" 
+                :checked="task.completed"
                 type="checkbox" 
                 />
-                <label v-bind:for="task.title"> {{ task.title }} </label>
+                <label :for="task.title"> {{ task.title }} </label>
               </li>
             </template>
           </ul>
@@ -141,7 +141,7 @@
 
   .checkbox:hover + label::before {
     border-color: $grayColor;
-    box-shadow: 0 0 20px 1px $darkBlueColorAlpha
+    box-shadow: 0 0 10px 2px $darkBlueColorAlpha;
   }
 
   .checkbox:checked + label::after {
@@ -180,6 +180,7 @@
     border: none;
     border-radius: 50%;
     box-shadow: 0 0 10px 2px $darkBlueColorAlpha;
+    transition: 0.15s;
     cursor: pointer;
 
     &:focus {
