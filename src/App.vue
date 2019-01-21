@@ -5,7 +5,7 @@
       <section class="todo">
         <modal v-if="getModal" />
         <ul class="list">
-          <template v-for="task in getTasks">
+          <template v-for="task in getTasks.slice(0,5)">
             <li class="list__item" v-bind:key="task.id">
               <input 
               class="checkbox visually-hidden" 
@@ -54,7 +54,7 @@
       fade
     },
     beforeMount() {
-       this.getData() 
+      this.getData()
     }
   }
 
