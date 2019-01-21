@@ -2,28 +2,30 @@
   <div class="app">
     <fade v-if="getModal" />
     <div class="wrapper">
-      <section class="todo">
-        <modal v-if="getModal" />
-        <ul class="list">
-          <template v-for="task in getTasks.slice(0,20)">
-            <li class="list__item" v-bind:key="task.id">
-              <input 
-              class="checkbox visually-hidden" 
-              v-bind:name="task.title" 
-              v-bind:id="task.title" 
-              v-bind:checked="task.completed === true"
-              type="checkbox" 
-              />
-              <label v-bind:for="task.title"> {{ task.title }} </label>
-            </li>
-          </template>
-        </ul>
-        <button 
-        @click.prevent="changeModalState" 
-        class="todo__add"
-        >
-        </button>
-      </section>
+        <section class="todo" v-show="changed">
+          <transition name="bounce">
+          <modal v-if="getModal" />
+          </transition>
+          <ul class="list">
+            <template v-for="task in getTasks.slice(0,5)">
+              <li class="list__item" v-bind:key="task.id">
+                <input 
+                class="checkbox visually-hidden" 
+                v-bind:name="task.title" 
+                v-bind:id="task.title" 
+                v-bind:checked="task.completed === true"
+                type="checkbox" 
+                />
+                <label v-bind:for="task.title"> {{ task.title }} </label>
+              </li>
+            </template>
+          </ul>
+          <button 
+          @click.prevent="changeModalState" 
+          class="todo__add"
+          >
+          </button>
+        </section>
     </div>
   </div>
 </template>
@@ -33,6 +35,11 @@
   import fade from './views/fade'
 
   export default {
+    data() {
+      return {
+        changed: false
+      }
+    },
     computed: {
       getTasks() {
         return this.$store.getters['getTasks']
@@ -47,6 +54,9 @@
       },
       getData() {
         this.$store.dispatch('getData')
+        .then(() => {
+          this.changed = true
+        })
       }
     },
     components: {
@@ -129,6 +139,11 @@
     border-radius: 50%;
   }
 
+  .checkbox:hover + label::before {
+    border-color: $grayColor;
+    box-shadow: 0 0 20px 1px $darkBlueColorAlpha
+  }
+
   .checkbox:checked + label::after {
     content: "";
     position: absolute;
@@ -146,7 +161,8 @@
   }
 
   .checkbox:checked + label {
-    color: $grayColor;
+    color: $grayColor;;
+    text-decoration: line-through;
   }
 
   .todo__add {
@@ -168,6 +184,29 @@
 
     &:focus {
       outline: none;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px 3px $darkBlueColorAlpha;
+    }
+  }
+
+  .bounce-enter-active {
+    animation: bounce-in 0.5s;
+  }
+  .bounce-leave-active {
+    animation: bounce-in 0s reverse;
+  }
+  @keyframes bounce-in {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.3);
+    }
+    100% {
+      transform: scale(1);
     }
   }
 
