@@ -31,7 +31,7 @@
         this.$store.dispatch('changeModalState')
       },
       addTask() {
-        if (this.$refs.field.value) {
+        if (/\S/.test(this.$refs.field.value)) {
           this.changeModalState()
           this.$store.commit('addTask', {
             completed: false,
