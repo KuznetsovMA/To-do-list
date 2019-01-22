@@ -135,6 +135,10 @@
     box-shadow: 0 0 10px 2px $darkBlueColorAlpha;
   }
 
+  .checkbox:checked:hover {
+    border-color: $darkLimeColor;
+  }
+
   .checkbox:checked + label::after {
     content: "";
     position: absolute;
@@ -152,7 +156,7 @@
   }
 
   .checkbox:checked + label {
-    color: $grayColor;;
+    color: $grayColor;
     text-decoration: line-through;
   }
 

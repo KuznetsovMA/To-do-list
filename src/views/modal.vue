@@ -103,8 +103,13 @@ form {
 
   &:focus {
     outline: none;
+    border-color: #bdc0ca;
   }
   
+  &:hover {
+    border-color: #bdc0ca;
+  }
+
   &::placeholder {
     color: red;
     opacity: 1;
@@ -131,6 +136,11 @@ form {
   &:focus {
     outline: none;
   }
+
+  &:hover {
+    border-color: $grayColor;
+    background-image: url("../assets/close-gray.svg");
+  }
 }
 
 .modal__submit {
@@ -152,6 +162,10 @@ form {
 
   &:focus {
     outline: none;
+  }
+
+  &:hover {
+    background-color: $darkLimeColor;
   }
 }
 
