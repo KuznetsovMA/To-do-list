@@ -5,8 +5,8 @@
 *.pdf
 *.psd
 *.sublime*
-dist/
 node_modules/
 npm-debug.log*
 Thumbs.db
 .vscode/
+dist
