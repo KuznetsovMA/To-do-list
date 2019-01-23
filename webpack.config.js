@@ -1,12 +1,13 @@
-var path = require('path')
-var webpack = require('webpack')
-var UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+let path = require('path')
+let webpack = require('webpack')
+let UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+let HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    publicPath: 'dist/',
     filename: 'build.js'
   },
   module: {
@@ -61,11 +62,18 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/
       },
-      {
-        test: /\.(png|jpg|gif|svg|woff|woff2|eot|ttf|otf)$/,
+      { 
+        test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash]'
+          name: 'assets/images/[name].[ext]?[hash]'
+        }
+      },
+      { 
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'assets/fonts/[name].[ext]?[hash]'
         }
       }
     ]
@@ -107,6 +115,10 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
+    }),
+    new HtmlWebpackPlugin({
+      filename: path.resolve(__dirname, 'dist/index.html'),
+      template: path.resolve(__dirname, 'index.html'),
     })
   ])
 }
