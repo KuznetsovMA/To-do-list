@@ -1,18 +1,6 @@
-# todolist
-
-> A Vue.js project
-
-## Build Setup
-
+# To Do List Appliaction based on Vue.js (Vuex)
 ``` bash
-# install dependencies
-npm install
+npm i - to install
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
+npm run build - to build for production
 ```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
