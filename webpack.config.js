@@ -1,7 +1,6 @@
 let path = require('path')
 let webpack = require('webpack')
 let UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-let HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -115,10 +114,6 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
-    }),
-    new HtmlWebpackPlugin({
-      filename: path.resolve(__dirname, 'dist/index.html'),
-      template: path.resolve(__dirname, 'index.html'),
     })
   ])
 }
