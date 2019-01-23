@@ -1,0 +1,13 @@
+body {
+  height: 100%;
+  margin: 0;
+
+  background-color: $cookieColor;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+
+  font-family: "Gotham Rounded", "Open Sans", sans-serif;
+}

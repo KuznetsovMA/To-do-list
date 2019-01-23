@@ -1,0 +1,25 @@
+.list {
+  width: 400px;
+  margin: 0 auto;
+  padding: 60px 0 80px 0;
+
+  list-style: none;
+  font-size: 25px;
+  font-family: "Gotham Rounded", "Open Sans", sans-serif;
+  color: $darkBlueColor;
+}
+
+.list__item {
+  position: relative;
+
+  width: 300px;
+}
+
+.list__item label {
+  display: block;
+  padding-bottom: 30px;
+
+  cursor: pointer;
+
+  user-select: none;
+}
