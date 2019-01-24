@@ -6,12 +6,12 @@
             <span
             v-if="(index + 1) <= 10" 
             class="user__number"> 
-            Id: {{ index + 1}} 
+            User №{{ index + 1}}
             </span>
             <span
             v-else
             class="user__number"> 
-            NEW
+            User NEW
             </span>
           </button>
         </template>

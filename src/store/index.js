@@ -33,9 +33,6 @@ const store = new Vuex.Store({
       }
     },
     getters: {
-      getTasks (state) {
-        return state.tasks
-      },
       getModal (state) {
         return state.modal
       },

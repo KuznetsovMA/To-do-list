@@ -24,9 +24,6 @@
 
   export default {
     computed: {
-      getTasks() {
-        return this.$store.getters['getTasks']
-      },
       getUserTasks() {
         return this.$store.getters['getUserTasks']
       }
@@ -58,7 +55,7 @@
       },
       sendData() {
         axios.post('https://jsonplaceholder.typicode.com/todos', {
-          task: this.getTasks[0]
+          task: this.getUserTasks[0]
         })
           .then(res => {
             console.log(res)

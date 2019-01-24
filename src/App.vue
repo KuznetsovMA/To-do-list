@@ -34,9 +34,6 @@
 
   export default {
     computed: {
-      getTasks() {
-        return this.$store.getters['getTasks']
-      },
       getModal() {
         return this.$store.getters['getModal']
       },
