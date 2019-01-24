@@ -1,0 +1,36 @@
+.users {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 325px;
+  margin: 0 auto;
+}
+
+.user__button {
+  width: 55px;
+  height: 55px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  padding: 0;
+
+  font-family: "Gotham Rounded", "Open Sans", sans-serif;
+
+  background-color: $limeColor;
+  border: none;
+  box-shadow: 1px 1px 10px 4px $darkBlueColorAlpha;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $darkLimeColor;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.user__number {
+  font-size: 14px;
+  color: white;
+  font-style: inherit;
+}

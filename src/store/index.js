@@ -8,6 +8,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
     state: {
         tasks: {},
+        tasksByUser: {},
         modal: false
     },
     mutations: {
@@ -15,7 +16,7 @@ const store = new Vuex.Store({
         return state[name] = value
       },
       addTask (state, task) {
-        state.tasks.unshift(task)
+        state.tasks.push(task)
       }
     },
     actions: {
@@ -37,6 +38,17 @@ const store = new Vuex.Store({
       },
       getModal (state) {
         return state.modal
+      },
+      getUsers (state) {
+        let obj = {}
+        for (let task = 0; task < state.tasks.length; task++) {
+          let str = state.tasks[task].userId
+          obj[str] = true
+        }
+        return Object.keys(obj)
+      },
+      getUserTasks (state) {
+        return state.tasksByUser
       }
     }
 })
