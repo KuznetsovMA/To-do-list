@@ -22,14 +22,7 @@
         <button @click.prevent="changeModalState" class="todo__add">
         </button>
       </section>
-      <section class="users">
-        <template v-for="(user, index) in getUsers">
-          <button :key="index + 1" class="user__button"
-          @click="pushTasksByUser(index + 1)">
-            <span class="user__number"> Id: {{ index + 1}} </span>
-          </button>
-        </template>
-      </section>
+      <users />
     </div>
   </div>
 </template>
@@ -37,6 +30,7 @@
 <script>
   import modal from './views/modal'
   import fade from './views/fade'
+  import users from './views/users'
 
   export default {
     computed: {
@@ -45,9 +39,6 @@
       },
       getModal() {
         return this.$store.getters['getModal']
-      },
-      getUsers() {
-        return this.$store.getters['getUsers']
       },
       getUserTasks() {
         return this.$store.getters['getUserTasks']
@@ -62,17 +53,12 @@
           .then(() => {
             this.changed = true
           })
-      },
-      pushTasksByUser(user) {
-        const result = this.$store.state.tasks.filter(function(task) {
-          return task.userId === user
-        })
-        this.$store.commit('set', {name: 'tasksByUser', value: result})
       }
     },
     components: {
       modal,
-      fade
+      fade,
+      users
     },
     created() {
       this.getData()
