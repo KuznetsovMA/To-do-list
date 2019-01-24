@@ -11,9 +11,12 @@
       class="modal__field" 
       type="text"
       placeholder="" 
-      name="name">
+      name="name"
+      maxlength="35"
+      >
       <button
-      @click.prevent="addTask" 
+      @click.prevent="addTask"
+      @keyup.enter="addTask" 
       class="modal__submit">OK</button>
     </form>
   </div>

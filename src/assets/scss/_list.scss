@@ -11,13 +11,16 @@
 
 .list__item {
   position: relative;
-
+  display: flex;
+  align-content: center;
+  align-items: center;
   width: 300px;
+  margin-bottom: 30px;
 }
 
 .list__item label {
-  display: block;
-  padding-bottom: 30px;
+  display: inline-block;
+  width: inherit;
 
   cursor: pointer;
 

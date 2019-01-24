@@ -65,6 +65,8 @@
 
   &:focus {
     outline: none;
+    background-image: url("./assets/images/close-gray.svg");
+    border-color: $grayColor;
   }
 
   &:hover {
@@ -92,6 +94,7 @@
 
   &:focus {
     outline: none;
+    background-color: $darkLimeColor;
   }
 
   &:hover {

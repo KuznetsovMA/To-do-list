@@ -1,11 +1,12 @@
 .checkbox + label::before {
   content: "";
   position: absolute;
-  top: 0;
+  top: 50%;
   right: -100px;
 
   width: 42px;
   height: 42px;
+  margin-top: -26px;
 
   border: 4px solid $lightGrayColor;
   border-radius: 50%;
@@ -23,11 +24,12 @@
 .checkbox:checked + label::after {
   content: "";
   position: absolute;
-  top: 0;
+  top: 50%;
   right: -100px;
 
   width: 42px;
   height: 42px;
+  margin-top: -26px;
 
   background-image: url("./assets/images/checked.png");
   background-repeat: no-repeat;
