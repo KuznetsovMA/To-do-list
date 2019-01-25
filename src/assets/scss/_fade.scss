@@ -10,3 +10,25 @@
   background-color: $limeColor;
   opacity: 0.8;
 }
+
+.fade:after,
+.fade:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.fade:after {
+  background: radial-gradient(circle,red,transparent);
+  background-size: 400%;
+
+  animation: colorSpin 30s linear infinite;
+}
+
+.fade:before {
+  background-color: yellow;
+}
