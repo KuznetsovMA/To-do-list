@@ -36,9 +36,7 @@
         this.$store.dispatch('changeModalState')
       },
       pushTasksByUser(user) {
-        const result = this.$store.state.tasks.filter(function(task) {
-          return task.userId === user
-        })
+        const result = this.$store.state.tasks.filter((task) => task.userId === user)
         this.$store.commit('set', {name: 'tasksByUser', value: result})
       },
       addTask() {
