@@ -46,6 +46,18 @@
   }
 }
 
+.modal__field--error {
+  border-bottom: 2px solid red;
+
+  &:focus {
+    border-color: red;
+  }
+
+  &:hover {
+    border-color: red;
+  }
+}
+
 .modal__close {
   display: block;
   width: 50px;

@@ -52,8 +52,7 @@
           this.pushTasksByUser(11)
           this.sendData()
         } else {
-          this.$refs.field.style.borderBottom = '2px solid red'
-          this.$refs.field.placeholder = `Oops, there's no task`
+          this.$refs.field.classList.add('modal__field--error')
         }
       },
       sendData() {
