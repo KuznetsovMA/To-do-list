@@ -24,12 +24,16 @@ const store = new Vuex.Store({
         commit('set', {name: 'modal', value: !state.modal})
       },
       getData ({commit}) {
-        return axios.get(GET_DATA)
-        .then(res => {
-          console.log(res)
-          commit('set', {name: 'tasks', value: res.data})
-        })
-        .catch(err => console.log(err))
+        const makeRequest = async () => {
+          try {
+            const data = await axios.get(GET_DATA)
+            console.log(data)
+            commit('set', {name: 'tasks', value: data.data})
+          } catch (err) {
+            console.log(err)
+          }
+        }
+        makeRequest()
       }
     },
     getters: {

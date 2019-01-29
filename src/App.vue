@@ -8,8 +8,10 @@
         </transition>
         <ul class="list">
           <template v-for="(task, index) in getUserTasks">
-            <li class="list__item" 
-            :key="index">
+            <li 
+            class="list__item" 
+            :key="index"
+            >
               <input class="checkbox visually-hidden" 
               :name="task.title" 
               :id="task.title" 
